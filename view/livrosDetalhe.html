@@ -1,0 +1,22 @@
+<div class="row" ng-repeat="item in livro track by $index"> 
+    <h1>{{item.volumeInfo.title}}<small>(ID: {{item.id}})</small></h1>      
+    <div class="col col-sm-6" >
+        <img src="img/angular.png" ng-src="{{item.volumeInfo.imageLinks.smallThumbnail}}" alt=""/>       
+    </div>
+
+    <div class="col col-sm-6 last" >  
+        <div class="product-top">
+          <h4 class="">Autor:<span>{{item.volumeInfo.authors | formatFilter}}</span></h4>
+          <h5 class="">Editora: {{item.volumeInfo.publisher}}</h5>
+          <h6 class="">Idioma: {{item.volumeInfo.language}}</h6>
+          <h6 class="">Páginas: {{item.volumeInfo.pageCount}}</h6>
+             
+          <p>{{item.volumeInfo.description}}</p>
+        </div>
+            
+        <div class="product-footer left">
+          <a href="" class="btn btn-default right glyphicon glyphicon-heart-empty" role="button" ng-click="adicionarFavorito(item)"></a>
+        </div>
+     </div>       
+ </div>
+      

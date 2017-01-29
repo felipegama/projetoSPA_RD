@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="livrosModulo">
+  <head>
+    <meta charset="utf-8">
+    <title>RD Teste SPA - angular, TDD</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>document.write('<base href="' + document.location + '" />');</script>
+
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>   
+    <script src="lib/ngStorage.min.js"></script>
+    <script src="lib/angular-route.min.js"></script>
+    <script src="lib/angular-resource.min.js"></script>
+    <script src="lib/ngUiBootstrap.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers/livroController.js"></script>
+    <script src="js/controllers/livroDetalheController.js"></script>
+    <script src="js/services/livrosServico.js"></script>
+    <script src="js/filters/filtros.js"></script>
+  </head>
+  <body ng-controller="LivrosController">
+  <!-- header (menu) -->
+    <header>
+        <nav class="navbar navbar-default primary">
+          <div class="container-fluid">
+            <!-- logo -->
+            <div class="navbar-header col-xs-1">              
+              <a class="navbar-brand" href="#!/livros">RD Livros</a>
+            </div>
+            <!-- search-->
+            <div class="container container-fluid navbar-left col-xs-10" id="bs-example-navbar-collapse-1">              
+              <form class="navbar search">
+                <div class="form-control">     
+                  <input type="text" class="" placeholder="Que livro você procura? (titulo ou autor)" ng-change="pesquisaLivros()" ng-model="termoPesquisa">
+                </div> 
+                <div class="input-group left">
+                    <label class="radio-inline">Ordernar por:  </label>
+                    <label class="radio-inline"><input type="radio" ng-model="orderProp" name="sortBy" checked="checked" value="volumeInfo.title">Titulo</label>
+                    <label class="radio-inline"><input type="radio" ng-model="orderProp" name="sortBy" checked="" value="volumeInfo.authors">Autor</label>
+                </div><!-- /input-group -->               
+              </form>              
+            </div><!-- /.navbar-collapse -->
+            <!-- favoritos -->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="col-xs-1">
+                  <a href="#!/favoritos" class="glyphicon glyphicon-heart-empty" title="Favoritos"><span class="favItens"><span>{{totalFavoritos()}}</span></span></a>
+                </li>                
+             </ul>             
+          </div><!-- /.container-fluid -->
+        </nav>        
+    </header>
+    <!-- content -->
+    <main>
+        <div class="container">        
+           <!-- section onde as view sao carregadas -->
+           <section class="container-fluid result" ng-view></section>             
+        </div>
+    </main>
+    <!-- footer -->
+    <footer class="navbar primary">
+         <div class="container center">
+            <p>2017 - Felipe Gama</p>
+          </div>
+    </footer>
+  </body>
+</html>

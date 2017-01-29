@@ -1,0 +1,30 @@
+<div class="row">    
+  <h1>Lista de favoritos</h1>   
+  <div class="col-md-12" >
+      <div class="panel panel-default">
+      
+      <div class="panel-heading">Minha lista</div>
+
+      <!-- Table -->
+      <table class="table">
+          <thead>
+            <tr>          
+              <th></th>
+              <th>Titulo</th>
+              <th>Autor</th>
+              <th class="center">Remover</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="livroFavoritos in livrosFavoritos  track by $index">
+              <td><img src="img/angular.png" ng-src="{{livroFavoritos.volumeInfo.imageLinks.smallThumbnail}}" alt=""/></td>
+              <td>{{livroFavoritos.volumeInfo.title | limitTo: 30 }}{{item.volumeInfo.title.length > 30 ? '...' : ''}}</td> 
+              <td>{{livroFavoritos.volumeInfo.authors  | formatFilter}}</td>    
+              <td class="center"><a href="" ng-click="removerLivro()" class="link-delete">X</a></td>                   
+            </tr>                     
+          </tbody>
+      </table>
+      </div>                       
+  </div>
+</div>
+      
